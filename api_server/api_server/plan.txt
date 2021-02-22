@@ -1,12 +1,10 @@
-Поля в бд:
-caption
-image-url
-video_url
-location-id
-user-tags
-thumb_offset
-ig-user-id
-creation_id
+Создаём медиа объект
+вызываем функцию, которая обновляет объекты в posts_date_pub
+
+
+
+
+
 
 Публикация фото: ig-user-id, caption, image-url, location-id, POST_ID(Рандомная цифра из приложения) в отдельной таблице user-tags
 

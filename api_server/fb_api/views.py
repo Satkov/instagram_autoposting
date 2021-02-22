@@ -1,3 +1,7 @@
-from django.shortcuts import render
+import time
 
-# Create your views here.
+time1 = time.time()
+
+print(time1)
+
+def

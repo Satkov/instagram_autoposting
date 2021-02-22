@@ -9,7 +9,7 @@ class PhotoPost(models.Model):
     location_id = models.CharField(max_length=2000, blank=True, null=True)
     user_tags = models.CharField(max_length=2200, blank=True, null=True)
     token = models.CharField(max_length=2000, blank=False, null=False)
-    date_pub = models.IntegerField(blank=False, null=False)
+    date_pub = models.BigIntegerField(blank=False, null=False)
 
 
 class VideoPost(models.Model):
@@ -20,4 +20,4 @@ class VideoPost(models.Model):
     location_id = models.CharField(max_length=2000, blank=True, null=True)
     thump_offset = models.CharField(max_length=2000, blank=True, null=True)
     token = models.CharField(max_length=2000, blank=False, null=False)
-    date_pub = models.IntegerField(blank=False, null=False)
+    date_pub = models.BigIntegerField(blank=False, null=False)
