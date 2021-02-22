@@ -1,0 +1,91 @@
+Поля в бд:
+caption
+image-url
+video_url
+location-id
+user-tags
+thumb_offset
+ig-user-id
+creation_id
+
+Публикация фото: ig-user-id, caption, image-url, location-id, POST_ID(Рандомная цифра из приложения) в отдельной таблице user-tags
+
+user-tags: post_id, username, x, y
+
+публикация видео: ig-user-id, caption, location_id, thumb_offset, video_url
+
+
+
+{caption}
+        {location_id}
+        {thumb_offset} - стопкадр. Передаётся в миллисекундах
+        {video_url}
+
+
+Не более 25 публикаций за 24 часа
+
+POST /{ig-user-id}/media — позволяет создавать контейнеры медиаобъектов.
+
+    поля:
+    {caption} - описание под постом. Ограничения: 2200 символов, не более 30 хэштегов, не более 20 @
+    {image-url} - URL фотка. Должна быть на публичном сервере.
+    {location-id} - геотег
+    {user-tags} - пользователи, отмеченные на картинке
+    пример:
+    POST graph.facebook.com/17841400008460056/media
+      ?image_url=https//www.example.com/images/bronzed-fonzes.jpg
+      &caption=#BronzedFonzes!
+      &user_tags=
+        [
+          {
+            username:'kevinhart4real',
+            x: 0.5,
+            y: 0.8
+          },
+          {
+            username:'therock',
+            x: 0.3,
+            y: 0.2
+          }
+        ]
+        return {creation_id}:
+        {
+          "id": "17889455560051444"
+        }
+
+
+POST /{ig-user-id}/media?media_type=video&video_url={video_url}  - создание видеопостов
+        поля:
+        {caption}
+        {location_id}
+        {thumb_offset} - стопкадр. Передаётся в миллисекундах
+        {video_url} - урл на видос с публичного сервера.
+
+
+Публикация поста: POST /{ig-user-id}/media_publish?creation_id={creation_id}
+        {ig-user-id} - IG User https://developers.facebook.com/docs/instagram-api/reference/ig-user
+        {creation_id} - то, что вернется после создания экземпляра медиаобъекта
+        Sample Response
+            {
+              "id": "17920238422030506"
+            }
+
+
+
+
+UpdateModelMixin
+Предоставляет .update(request, *args, **kwargs)метод, который реализует обновление и сохранение существующего экземпляра модели.
+
+Также предоставляет .partial_update(request, *args, **kwargs)метод, аналогичный этому updateметоду, за исключением того, что все поля для обновления будут необязательными. Это позволяет поддерживать HTTP- PATCHзапросы.
+
+Если объект обновлен, возвращается 200 OKответ с сериализованным представлением объекта в качестве тела ответа.
+
+Если данные запроса, предоставленные для обновления объекта, были недопустимыми, 400 Bad Requestбудет возвращен ответ с подробностями об ошибке в теле ответа.
+
+
+
+получать объекты по IG user
+создавать объекты с видео и с фото
+Менять значение Токен, дату публикации, описание, геотэг и usertags
+Удалять объект поста
+
