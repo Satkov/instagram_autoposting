@@ -6,6 +6,8 @@ from .models import PhotoPost, VideoPost
 from .serializer import PostPhotoListSerializer, PostPhotoUpdateSerializer
 from .serializer import VideoPostListSerializer
 
+from django_bulk_update.helper import bulk_update
+
 
 class APIPhotoPost(APIView):
     def get(self, request):
@@ -36,30 +38,32 @@ class APIPhotoPost(APIView):
     def patch(self, request):
         """Редактирует значение одного из полей модели поста с фото"""
         request_data = request.query_params
-        if new_field == 'token':
-            post = PhotoPost.objects.get(user_id=request_data['user_id'])
-            serializer = PostPhotoUpdateSerializer(post,
-                                                   data={request_data['new_field']:
-                                                         value},
-                                                   partial=True)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        """Изменение токена по user_id"""
+        if request_data['new_field'] == 'token':
+            posts = PhotoPost.objects.filter(
+                   user_id=request_data['user_id'])
+
+            for post in posts:
+                post.token = request_data['value']
+
+            bulk_update(posts, update_fields=['token'])
+            return Response(status=status.HTTP_202_ACCEPTED)
 
         post = PhotoPost.objects.get(id=request_data['id'])
         value = request_data['value']
-        if new_field == 'date_pub' or new_field == 'user_id':
+        """Значение приобразуется в int, чтобы записать его в BigIntegersField"""
+        if request_data['new_field'] == 'date_pub' or request_data['new_field'] == 'user_id':
             value = int(value)
         serializer = PostPhotoUpdateSerializer(post,
                                                data={request_data['new_field']:
-                                                     value},
+                                                         value},
                                                partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def delete(self, request):
-        '''Удаляет пост с фото'''
+        """Удаляет пост с фото"""
         request_data = request.query_params
         PhotoPost.objects.get(id=request_data['id']).delete()
         return Response(status=status.HTTP_202_ACCEPTED)
@@ -94,9 +98,23 @@ class APIVideoPost(APIView):
     def patch(self, request):
         """Меняет одно из значений в модели поста с видео"""
         request_data = request.query_params
+
+        """Изменение токена по user_id"""
+        if request_data['new_field'] == 'token':
+            posts = VideoPost.objects.filter(
+                user_id=request_data['user_id'])
+
+            for post in posts:
+                post.token = request_data['value']
+
+            bulk_update(posts, update_fields=['token'])
+            return Response(status=status.HTTP_202_ACCEPTED)
+
         post = VideoPost.objects.get(id=request_data['id'])
         value = request_data['value']
-        if new_field == 'date_pub' or new_field == 'user_id':
+
+        """Значение приобразуется в int, чтобы записать его в BigIntegerField"""
+        if request_data['new_field'] == 'date_pub' or new_field == 'user_id':
             value = int(value)
         serializer = VideoPostListSerializer(post,
                                              data={request_data['new_field']:
