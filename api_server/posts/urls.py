@@ -1,7 +1,16 @@
-from django.urls import path
-from .views import APIPhotoPost, APIVideoPost
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import PostViewSet
+from rest_framework.authtoken import views
+
+v1_router = DefaultRouter()
+
+v1_router.register(
+    r'v1/posts',
+    PostViewSet,
+)
 
 urlpatterns = [
-    path('api/v1/photoposts/', APIPhotoPost.as_view()),
-    path('api/v1/videoposts/', APIVideoPost.as_view()),
-]
+    path('', include(v1_router.urls)),
+    path('v1/api-token-auth/', views.obtain_auth_token)
+    ]
