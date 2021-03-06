@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfe6db42-d13d-4004-be50-638617285422" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api_server/fb_api/q_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/api_server/plan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/api_server/api_server/plan.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/api_server/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_server/api_server/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/api_server/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_server/api_server/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/fb_api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_server/fb_api/facebook_api_operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/fb_api/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/fb_api/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/fb_api/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/fb_api/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/fb_api/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_server/posts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_server/posts/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_server/posts/permissions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +52,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="q_manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="instagram_autoposting" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -54,7 +65,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/api_server/fb_api/views.py" />
+      <option name="SCRIPT_NAME" value="D:\Dev\instagram_autoposting\api_server\fb_api\q_manager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -65,7 +76,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.views" />
+        <item itemvalue="Python.q_manager" />
       </list>
     </recent_temporary>
   </component>
@@ -92,7 +103,9 @@
       <workItem from="1614359087347" duration="35000" />
       <workItem from="1614359176429" duration="26000" />
       <workItem from="1614449789451" duration="3584000" />
-      <workItem from="1614502138101" duration="1722000" />
+      <workItem from="1614502138101" duration="5632000" />
+      <workItem from="1615016459334" duration="2400000" />
+      <workItem from="1615020588193" duration="9614000" />
     </task>
     <servers />
   </component>
