@@ -16,7 +16,7 @@ def create_container_schedule(post_id, date_pub, content_type):
         func_name = 'VideoContainer'
 
     schedule(f'fb_api.facebook_api_operator.{func_name}',
-             post_id,
+             post_id=post_id,
              schedule_type=Schedule.ONCE,
              next_run=datetime.utcfromtimestamp(
                  schedule_time).strftime('%Y-%m-%d %H:%M:%S')

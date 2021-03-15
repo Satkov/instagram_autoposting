@@ -3,12 +3,12 @@ from posts.models import Post
 from .q_manager import publish_container_schedule
 
 
-def PhotoContainer(self, post_id):
+def PhotoContainer(post_id):
     """
     Создаёт контейнер с постом (Хранится 24 часа)
     """
     post = Post.objects.get(id=post_id)
-    BASE_URL = f'graph.facebook.com/v8.0/{post.user_id}/media/'
+    BASE_URL = f' http://graph.facebook.com/v8.0/{post.user_id}/media'
     params = {
         'caption': post.caption,
         'image_url': post.url,
@@ -25,7 +25,7 @@ def PhotoContainer(self, post_id):
                                post.user_id, post.token)
 
 
-def VideoContainer(self, post_id):
+def VideoContainer(post_id):
     """
     Создаёт контейнер с постом (Хранится 24 часа)
     """
