@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save
-from fb_api.q_manager import task_manager
+from fb_api.q_manager import create_container_schedule
 from django.dispatch import receiver
 
 
@@ -24,4 +24,4 @@ class Post(models.Model):
 @receiver(post_save, sender=Post)
 def post_save_receiver(sender, instance, created, *args, **kwargs):
     if created:
-        task_manager(instance.id, instance.date_pub, instance.content_type)
+        create_container_schedule(instance.id, instance.date_pub, instance.content_type)
