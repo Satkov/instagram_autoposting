@@ -24,4 +24,4 @@ class Post(models.Model):
 @receiver(post_save, sender=Post)
 def post_save_receiver(sender, instance, created, *args, **kwargs):
     if created:
-        create_container_schedule(instance.id, instance.date_pub, instance.content_type)
+        create_container_schedule(instance.id, instance.date_pub)
