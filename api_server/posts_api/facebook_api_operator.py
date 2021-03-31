@@ -1,6 +1,5 @@
 import requests
-from posts.models import Post
-from rest_framework.response import Response
+from .models import Post
 
 
 def Container(post_id):

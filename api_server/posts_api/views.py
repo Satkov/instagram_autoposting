@@ -1,6 +1,6 @@
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
-from .permissions import IsAuthenticated
 from .models import Post
 from .serializer import PostSerializer
 
