@@ -1,13 +1,14 @@
 import requests
+
 from .models import Post
 
 
-def Container(post_id):
+def container(post_id):
     """
     Создаёт контейнер с постом (Хранится 24 часа)
     """
     post = Post.objects.get(id=post_id)
-    BASE_URL = f'https://graph.facebook.com/v8.0/{post.user_id}/media'
+    base_url = f'https://graph.facebook.com/v8.0/{post.user_id}/media'
     params = {
         'caption': post.caption,
         'image_url': post.url,
@@ -25,7 +26,7 @@ def Container(post_id):
             'thumb_offset': post.thumb_offset,
         }
 
-    response = requests.post(BASE_URL,
+    response = requests.post(base_url,
                              params=params)
 
     try:
@@ -33,10 +34,10 @@ def Container(post_id):
     except KeyError:
         raise ValueError('Wrong user id')
 
-    ContainerPublisher(container_id, post.user_id, post.token)
+    container_publisher(container_id, post.user_id, post.token)
 
 
-def ContainerPublisher(container_id, user_id, access_token):
+def container_publisher(container_id, user_id, access_token):
     """
     Публикует контейнер с постом
     """

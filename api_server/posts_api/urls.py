@@ -1,7 +1,9 @@
 from django.urls import path, include
+
 from rest_framework.routers import DefaultRouter
-from .views import PostViewSet
 from rest_framework.authtoken import views
+
+from .views import PostViewSet
 
 v1_router = DefaultRouter()
 

@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from django_q.tasks import schedule
 from django_q.models import Schedule
+from django_q.tasks import schedule
 
 
 def create_container_schedule(post_id, date_pub, post):
