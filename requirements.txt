@@ -34,3 +34,4 @@ six==1.15.0
 toml==0.10.2
 urllib3==1.25.11
 wcwidth==0.2.5
+environ
